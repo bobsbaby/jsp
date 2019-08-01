@@ -17,7 +17,7 @@ table {
 }
 
 td {
-	height : 80px
+	height : 80px 
 }
 
 </style>
