@@ -19,9 +19,15 @@
 		String userID = request.getParameter(userId); -> 객체
 
 		String password = request.getParameter("password");
-		
-		
 	 -->
+	 
+	 <%
+		//POST방식 한글 지원
+		//parameter를 받은 다음에 setcharacter를 해주면 적용이 안 되므로 제일 처음에 해줘야 한다. 
+		//parameter 관련 메소드를 호출하기 전에 setCharacterEncoding 메소드를 호출해야 인코딩 설정이 적용된다.
+	 	request.setCharacterEncoding("utf-8");
+	 %>
+	 request method : <%=request.getMethod() %><br>
 	 
 	<%
 		String userId = request.getParameter("userId");

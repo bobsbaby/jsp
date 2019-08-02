@@ -5,10 +5,28 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src = "/js/jquery-3.4.1.min.js"></script>
+<script>
+	//문서 로딩이 완료된 다음에 실행
+	$(document).ready(function(){
+		//라디오 버튼 클릭 이벤트 등록
+		
+		$("#get,#post").click(function(){
+			
+			//console.log("click");
+			//클릭한 라디오 버튼이 get이면 .form태그의 method 속성을 get아로 변경
+			var method = $(this).attr("id");
+			$("form").attr("method",method);
+			//클릭한 라디오 버튼이 post이면 .form 태그의 mehtod 속성을 post로 변경
+		})
+		
+	})
+</script>
 </head>
 <body>
 
-<h2>get login</h2>
+<h2>get / post login</h2>
+
 <!-- 서버로 요청을 보낼 때 
 	1. form 태그 작성 
 		- action 속성 : 요청을 보낼 주소 
@@ -26,23 +44,16 @@
 		- value 속성이 파라미터의 값
  -->
  
-<form action = "/jsp/getLoginProcess.jsp" method = "get">
+get :  <input type = "radio" id = "get" name = "method" value = "get" checked/>
+post : <input type = "radio" id = "post" name = "method" value = "post"/> 
+	<br>
+<form action = "/jsp/loginProcess.jsp" method = "get">
 	userid : <input type = "text" name = "userId" value = "brown"/><br>
 	userid : <input type = "text" name = "userId" value = "cony"/><br>
 	password : <input type = "password" name = "password" value ="brown1234"/><br>
 	<input type ="submit" value = "로그인"/>
 	
-	
 </form>
-<h2>post login</h2>
 
-<form action = "/jsp/postLoginProcess.jsp" method = "post">
-	userid : <input type = "text" name = "userId" value = "brown"/><br>
-	userid : <input type = "text" name = "userId" value = "cony"/><br>
-	password : <input type = "password" name = "password" value ="brown1234"/><br>
-	<input type ="submit" value = "로그인"/>
-	
-	
-</form>
 </body>
 </html>
