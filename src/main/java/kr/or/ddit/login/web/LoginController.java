@@ -17,9 +17,9 @@ import kr.or.ddit.user.model.UserVo;
 
 
 /**
- * Servlet implementation class LoginController
+ * Servlet implementation class LoginController / loadonstartup -> 요청이 없어도 서버가 기동이 될때 init메서드 호출
  */
-@WebServlet("/login")
+@WebServlet(urlPatterns = {"/login"}, loadOnStartup = 5)
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
       

@@ -10,10 +10,24 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <!-- 초기화 파라미터 (사용하는 경우가 많이 없음)-->
+  <context-param>
+  	<param-name>ADMIN</param-name>
+  	<param-value>brown</param-value>
+  </context-param>
+  
   <!-- 4단계  -->
+  
+  
+  
   <servlet>
   	<servlet-name>helloWorld</servlet-name> <!-- 개발자가 붙여주는 서블릿 이름(별칭) -> 중첩이 되면 안 된다 -->
-  	<servlet-class>kr.or.ddit.servlet.TimesTablesServlet</servlet-class>	<!-- 서블릿의 풀 네임(패키지 + 클래스명) -->
+  	<servlet-class>kr.or.ddit.servlet.HelloServlet</servlet-class>	<!-- 서블릿의 풀 네임(패키지 + 클래스명) -->
+  	<load-on-startup>1</load-on-startup>
+<!--   	<init-param> -->
+<!--   		<param-name>text</param-name> -->
+<!--   		<param-value>sally</param-value> -->
+<!--   	</init-param> -->
   </servlet>
   <servlet-mapping>
   	<servlet-name>helloWorld</servlet-name>  <!-- servlet에 작성해 놓은 이름과 동일해야 한다 -->
