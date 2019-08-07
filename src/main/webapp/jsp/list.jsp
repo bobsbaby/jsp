@@ -49,7 +49,7 @@ td {
 	
 		<% for(UserVo user : list) {  %> 
 		<tr>
-			<td><%=user.getUserName()%> </td>
+			<td><%=user.getUserNm()%></td>
 		<% } %>
 			</tr>
 

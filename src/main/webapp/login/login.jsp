@@ -1,6 +1,7 @@
 <%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,39 +16,41 @@
     <title>Signin Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <!-- 링크를 연결해줘야 함  -->
     <link href="<%=request.getContextPath() %>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="<%=request.getContextPath() %>/css/signin.css" rel="stylesheet">
+
   </head>
 
   <body>
 
     <div class="container">
-		<%
-			HttpSession httpSession = request.getSession();
-    		UserVo userVo = (UserVo)httpSession.getAttribute("S_USERVO");
-    		//userVo가 null일수도 있다는 가정 
-    		String userName = "";
-    		userName = userVo ==null ? "" : userVo.getUserName();
-    		
-    		String userId = request.getParameter("userId");
-    		userId = userId == null? "" : userId;
-		%>
-		
-		사용자 이름 : <%=userName %>
-      <form class="form-signin" action = "<%=request.getContextPath() %>/login" method = "post">
+	 <%
+	 	HttpSession httpSession = request.getSession();
+	     	UserVo userVo = (UserVo)httpSession.getAttribute("S_USERVO");
+	     	String userName = "";
+	     	userName = userVo == null ? "" : userVo.getUserNm();
+	 %>
+	  사용자 이름: <%=userName %>
+	  
+      <form class="form-signin" action="<%=request.getContextPath() %>/login" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         
-        <label for="userId" class="sr-only">userId</label>
-        <!-- sr-only : screen reader -->
-        <input type="text" id="userId" name = "userId" class="form-control" placeholder="userId" required autofocus value = "<%=userId%>">
-      
+        <label for="userId" class="sr-only">UserId</label>
+        <%
+        	//String userId = (String)request.getAttribute("userId");
+        	String userId = request.getParameter("userId");
+        	userId = userId == null ? "" : userId;
+        %>
+        <input type="text" id="userId" name="userId" class="form-control"
+        	   placeholder="userId" required autofocus value="brown"> <!-- value="<%=userId%>" -->
+        	   
         
         <label for="pass" class="sr-only">Password</label>
-        <input type="password" id="pass" name = "pass" class="form-control" placeholder="Password" required >
-        
+        <input type="password" id="pass" name="pass" class="form-control" 
+        	   placeholder="Password" required value="brown1234"> <!-- value="brown1234" -->
+		
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me

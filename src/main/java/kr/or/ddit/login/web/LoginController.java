@@ -62,7 +62,7 @@ public class LoginController extends HttpServlet {
 		
 		//db에서 조회해온 사용자 정보
 		 UserVo userVo = new UserVo();
-		 userVo.setUserName("브라운");
+		 userVo.setUserNm("정브라우니");
 		 userVo.setUserId("brown");
 		 userVo.setPass("brown1234");
 		 
