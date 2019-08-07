@@ -6,7 +6,7 @@
 <properties resource="kr/or/ddit/config/mybatis/db.properties"></properties>
 
   <typeAliases>
-  	<typeAlias alias="userVO" type="kr.or.ddit.user.model.UserVO"/>
+  	<typeAlias alias="user" type="kr.or.ddit.user.model.User"/>
   </typeAliases>
   
   <environments default="development">

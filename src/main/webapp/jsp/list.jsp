@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="kr.or.ddit.user.model.UserVo"%>
+<%@page import="kr.or.ddit.user.model.User"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.or.ddit.user.repository.UserDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -32,8 +32,8 @@ td {
 
 	<%
 		UserDao dao = new UserDao();
-		List<UserVo> list = dao.getUserList();
-				%>
+			List<User> list = dao.getUserList();
+	%>
 
 	<table border="1">
 		<tr>
@@ -47,7 +47,9 @@ td {
 		
 <%-- 		<% } %> --%>
 	
-		<% for(UserVo user : list) {  %> 
+		<%
+				for(User user : list) {
+			%> 
 		<tr>
 			<td><%=user.getUserNm()%></td>
 		<% } %>

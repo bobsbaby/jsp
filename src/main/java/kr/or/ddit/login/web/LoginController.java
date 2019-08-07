@@ -12,14 +12,16 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import kr.or.ddit.user.model.UserVo;
+import kr.or.ddit.user.model.User;
+import kr.or.ddit.user.repository.IUserDao;
+import kr.or.ddit.user.repository.UserDao;
 
 
 
 /**
- * Servlet implementation class LoginController
+ * Servlet implementation class LoginController / loadonstartup -> 요청이 없어도 서버가 기동이 될때 init메서드 호출
  */
-@WebServlet("/login")
+@WebServlet(urlPatterns = {"/login"}, loadOnStartup = 5)
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
       
@@ -61,20 +63,27 @@ public class LoginController extends HttpServlet {
 		logger.debug("passWord : {}", pass);
 		
 		//db에서 조회해온 사용자 정보
-		 UserVo userVo = new UserVo();
-		 userVo.setUserNm("정브라우니");
-		 userVo.setUserId("brown");
-		 userVo.setPass("brown1234");
+		 //UserVo userVo = new UserVo();
+		 IUserDao userDao = new UserDao();
+		 User user = userDao.getUser(userId);
+		 
+		 
+//		 userVo.setUserNm("정브라우니");
+//		 userVo.setUserId("brown");
+//		 userVo.setPass("brown1234");
 		 
 		 //사용자가 입력한 파라미터 정보와 db에서 조회해온 값이 동일할 경우 --> webapp/main.jsp
 		 //사용자가 입력한 파라미터 정보와 db에서 조회해온 값이 다를 경우 --> webapp/login/login.jsp
-		 if(userId.equals(userVo.getUserId())&&pass.equals(userVo.getPass())) {
+		 if(user.checkLoginValidate(userId, pass)){
+			 
+		//	 if(userId.equals(userVo.getUserId())&&pass.equals(userVo.getPass())) {
+		
 			 
 			 //세션 객체를 얻는 방법 
 			 HttpSession session = request.getSession();
 			 logger.debug("session.getId() : {} " ,session.getId());
 			 
-			 session.setAttribute("S_USERVO", userVo);
+			 session.setAttribute("S_USERVO", user);
 			 
 			 request.getRequestDispatcher("/main.jsp").forward(request, response);
 		 }
