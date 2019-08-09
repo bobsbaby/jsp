@@ -18,9 +18,11 @@
 			var method = $(this).attr("id");
 			$("form").attr("method",method);
 			//클릭한 라디오 버튼이 post이면 .form 태그의 mehtod 속성을 post로 변경
-		})
+		});
 		
-	})
+	});
+	
+	
 </script>
 </head>
 <body>
