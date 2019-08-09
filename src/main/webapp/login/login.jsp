@@ -26,10 +26,11 @@
 
 </head>
 <script src="<%=request.getContextPath()%>/js/jquery-3.4.1.min.js"></script>
+<script src="<%=request.getContextPath()%>/js/js.cookie.js"></script>
 <script>
 	$(document).ready(function(){
 		
-		var userId = getCookie("userId");
+		var userId = Cookies.get("userId");
 		if(userId != undefined){
 			$('#userId').val(userId);
 			//remember me checkbox 체크 로직 
@@ -43,38 +44,18 @@
 			//remember me check box가 체크가 되었는지 
 			if($('#rememberMe').prop("checked")){
 			//체크되어 있으면 userId 쿠키를 생성하고 값은 userId input의 값을 쿠키 값으로 설정
-				setCookie("userId", $("#userId").val(),30);
+				Cookies.set("userId", $("#userId").val(),{expires:30});
 			}
 			else{
 			//체크되어 있지 않으면 기존에 사용자가 아이디를 쿠키에 저장하는 기능을 사용하다가 더 이상 사용하지 않는 경우 
 			//처음부터 아이디 쿠키 저장 기능을 사용하지 않는 경우 
 			//	==> userId 쿠키를 삭제
-				deleteCookie("userId");				
+				Cookies.remove("userId");
 			}
 			//로그인 요청
 			$('#frm').submit();
 		});
 	});
-function getCookie(cookieId){
-	var cookies = document.cookie.split(';');
-	for(var i = 0; i < cookies.length; i++){
-		var cookie = cookies[i];
-		var cookieVal = cookie.split("=");
-		if(cookieId ==cookieVal[0])
-			return cookieVal[1];
-	}
-}
-
-function setCookie(cookieNm, cookieValue, expires) {
-	var dt = new Date();
-	dt.setDate(dt.getDate() + Number(expires));
-	//유효기간을 갖는 string 설정 
-	document.cookie = cookieNm + "=" + cookieValue + "; path =/; expires=" + dt.toGMTString();
-}
-
-function deleteCookie(cookieNm){
-	setCookie(cookieNm, "", -1);
-}
 
 </script>
 <body>
@@ -89,7 +70,7 @@ function deleteCookie(cookieNm){
 		사용자 이름:
 		<%=userName %>
 
-		<form id = "frm" class="form-signin"
+		<form id="frm" class="form-signin"
 			action="<%=request.getContextPath() %>/login" method="post">
 			<h2 class="form-signin-heading">Please sign in</h2>
 
