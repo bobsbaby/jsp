@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <%@page import="kr.or.ddit.user.model.User"%>
-=======
-<%@page import="kr.or.ddit.user.model.UserVo"%>
->>>>>>> branch 'master' of https://github.com/bobsbaby/jsp.git
 
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
