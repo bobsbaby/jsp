@@ -17,16 +17,16 @@
 
 <!-- Bootstrap core CSS -->
 <link
-	href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css"
+	href="${pageContext.request.contextPath }/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/css/signin.css"
+<link href="${pageContext.request.contextPath }/css/signin.css"
 	rel="stylesheet">
 
 </head>
-<script src="<%=request.getContextPath()%>/js/jquery-3.4.1.min.js"></script>
-<script src="<%=request.getContextPath()%>/js/js.cookie.js"></script>
+<script src="${pageContext.request.contextPath }/js/jquery-3.4.1.min.js"></script>
+<script src="${pageContext.request.contextPath }/js/js.cookie.js"></script>
 <script>
 	$(document).ready(function(){
 		
@@ -79,7 +79,7 @@
 		<%=userName %>
 
 		<form id="frm" class="form-signin"
-			action="<%=request.getContextPath() %>/login" method="post">
+			action="${pageContext.request.contextPath }/login" method="post">
 			<h2 class="form-signin-heading">Please sign in</h2>
 
 			<label for="userId" class="sr-only">UserId</label>

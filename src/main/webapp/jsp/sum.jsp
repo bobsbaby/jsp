@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src = "<%=request.getContextPath() %>/js/jquery-3.4.1.min.js"></script>
+<script src = "${pageContext.request.contextPath }/js/jquery-3.4.1.min.js"></script>
 
 <script>
 	$(function(){
@@ -19,7 +19,7 @@
 </head>
 <body>
 
-<form action = "<%=request.getContextPath() %>/jsp/requestSum.jsp" method = "get">
+<form action = "${pageContext.request.contextPath }/jsp/requestSum.jsp" method = "get">
 	
 	number : <input type = "text" name = "number" value = "5"/>
 	number2 : <input type = "text" name = "number2" value = "10"/>
