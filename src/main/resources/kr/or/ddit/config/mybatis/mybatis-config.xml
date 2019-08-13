@@ -7,6 +7,7 @@
 
   <typeAliases>
   	<typeAlias alias="user" type="kr.or.ddit.user.model.User"/>
+  	<typeAlias alias="lprod" type="kr.or.ddit.lprod.model.LprodVo"/>
   </typeAliases>
   
   <environments default="development">
@@ -22,5 +23,6 @@
   </environments>
   <mappers>
     <mapper resource="kr/or/ddit/config/mybatis/mapper/user.xml"/>
+    <mapper resource="kr/or/ddit/config/mybatis/mapper/lprod.xml"/>
   </mappers>
 </configuration>
