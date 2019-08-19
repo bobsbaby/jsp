@@ -21,23 +21,7 @@
 
 
 <%@ include file = "/commonJsp/basicLib.jsp" %>
-<script>
-//문서 로딩이 완료된 후 작업 진행 
-	$(document).ready(function(){
-		//사용자 정보 클릭시 이벤트 핸들러 
-		$('.lprodTr').on('click', function(){
-			console.log("lprodTr click");
-			//클릭된 tr태그의 자식태그(td)중 첫번째 자식의 텍스트 문자열
-			alert($(this).children().eq(1).text());
-			
-			//input 태그에 값 설정 
-			$('#lprod_gu').val($(this).children().eq(1).text());
-			//form태그 이용 전송 
-			console.log("serialize : " + $('#frm').serialize());
-			$('#frm').submit();
-		})
-	});
-</script>
+
 </head>
 <body>
 <form id = "frm" action ="${cp }/prodList" method = "get">
@@ -62,18 +46,24 @@ header
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<tr>
-					<th>ID</th>
-					<th>GU</th>
-					<th>NM</th>
+					<th>제품그룹명</th>
+					<th>제품그룹번호</th>
+					<th>바이어이름</th>
+					<th>제품아이디</th>
+					<th>제품명</th>
+					<th>가격</th>
 				</tr>
 
 				
 				<%--루프 태그 for (USer user : userList) --%>
-				<c:forEach items="${lprodList}" var="lprod">
+				<c:forEach items="${prod}" var="prod">
 					<tr class = "lprodTr">
-						<td>${lprod.lprod_id}</td>
-						<td>${lprod.lprod_gu}</td>
-						<td>${lprod.lprod_nm}</td>
+						<td>${prod.LPROD_NM}</td>
+						<td>${prod.PROD_LGU}</td>
+						<td>${prod.BUYER_NAME}</td>
+						<td>${prod.PROD_ID}</td>
+						<td>${prod.PROD_NAME}</td>
+						<td>${prod.PROD_PRICE}</td>
 					</tr>
 				</c:forEach>
 			</table>
