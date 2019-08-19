@@ -25,7 +25,7 @@
 	request.getRequestURI() 요청 URI :<%=request.getRequestURI() %> <br>
 	
 	<%-- 어플리케이션 이름 --%>
-	request.getContextPath() 요청 context path : ${pageContext.request.contextPath } <br>
+	request.getContextPath() 요청 context path : ${cp } <br>
 	request.getServerName() 서버 이름 : <%=request.getServerName() %> <br>
 	request.getServerPort() 서버 포트 : <%=request.getServerPort() %> <br>
 	
