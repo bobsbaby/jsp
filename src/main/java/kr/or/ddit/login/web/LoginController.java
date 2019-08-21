@@ -14,8 +14,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.or.ddit.user.model.User;
-import kr.or.ddit.user.repository.IUserDao;
-import kr.or.ddit.user.repository.UserDao;
+import kr.or.ddit.user.service.IUserService;
+import kr.or.ddit.user.service.UserService;
 
 
 
@@ -27,12 +27,12 @@ public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
-	private IUserDao userDao;
+	private IUserService userService;
 	
 	//controller가 실행될때 init 메서드 실행
 	@Override
 	public void init() throws ServletException {
-		userDao = new UserDao();
+		userService = new UserService();
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class LoginController extends HttpServlet {
 
 		//db에서 조회해온 사용자 정보
 		//UserVo userVo = new UserVo();
-		User user = userDao.getUser(userId);
+		User user = userService.getUser(userId);
 
 		//db에 존재하지 않는 사용자 체크 -->로그인 화면으로 이동
 		if(user ==null) {

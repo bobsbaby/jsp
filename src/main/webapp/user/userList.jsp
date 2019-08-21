@@ -26,12 +26,23 @@
 	$(document).ready(function(){
 		//사용자 정보 클릭시 이벤트 핸들러 
 		$('.userTr').on('click', function(){
-			console.log("userTr click");
 			//클릭된 tr태그의 자식태그(td)중 첫번째 자식의 텍스트 문자열
 			console.log($(this).children().first().text());
+			var tdText = $(this).children().eq(1).text();
+			console.log("tdText: " + tdText);
+			
+			// input 태그에 저장된 값 확인
+			var inputValue = $(this).find("input").val();
+			console.log("inputValue: " + inputValue);
+			
+			// data 속성으로 값(tr 태그에 저장된 값) 확인
+			var dataValue = $(this).data("userid"); // 모두 소문자로 치환됨
+			
+			console.log("dataValue: " + dataValue);
 			
 			//input 태그에 값 설정 
-			$('#userId').val($(this).children().first().text());
+			//$('#userId').val($(this).children().first().text());
+			$("#userId").val(dataValue);
 			//form태그 이용 전송 
 			console.log("serialize : " + $('#frm').serialize());
 			$('#frm').submit();
@@ -71,7 +82,8 @@ header
 				
 				<%--루프 태그 for (USer user : userList) --%>
 				<c:forEach items="${userList }" var="user">
-					<tr class = "userTr">
+				<tr class="userTr" data-userId="${user.userId }">
+					<input type="hidden" value="${user.userId }"/>
 						<td>${user.userId }</td>
 						<td>${user.userNm }</td>
 						<td>${user.alias }</td>

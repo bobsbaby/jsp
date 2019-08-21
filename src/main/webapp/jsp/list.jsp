@@ -1,3 +1,5 @@
+<%@page import="kr.or.ddit.user.service.UserService"%>
+<%@page import="kr.or.ddit.user.service.IUserService"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="kr.or.ddit.user.model.User"%>
 <%@page import="java.util.List"%>
@@ -31,8 +33,8 @@ td {
 		--%>
 
 	<%
-		UserDao dao = new UserDao();
-			List<User> list = dao.getUserList();
+	IUserService userService = new UserService();
+	List<User> list = userService.getUserList();
 	%>
 
 	<table border="1">

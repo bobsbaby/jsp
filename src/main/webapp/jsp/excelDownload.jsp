@@ -1,3 +1,5 @@
+<%@page import="kr.or.ddit.user.service.UserService"%>
+<%@page import="kr.or.ddit.user.service.IUserService"%>
 <%@page import="kr.or.ddit.user.model.User"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.or.ddit.user.repository.UserDao"%>
@@ -15,8 +17,8 @@
 
 	<%
 		response.setHeader("Content-Disposition", "attachment; filename=line.xls");
-			IUserDao userDao = new UserDao();
-			List<User> userlist = userDao.getUserList();
+	IUserService userService = new UserService();
+	List<User> userlist = userService.getUserList();
 	%>
 
 	<table>

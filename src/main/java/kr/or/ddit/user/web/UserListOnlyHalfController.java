@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.ddit.user.model.User;
 import kr.or.ddit.user.repository.UserDao;
+import kr.or.ddit.user.service.UserService;
 
 /**
  * Servlet implementation class UserListOnlyHalfController
@@ -21,7 +22,8 @@ public class UserListOnlyHalfController extends HttpServlet {
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserDao dao = new UserDao();
-		List<User> list = dao.getUserListOnlyHalf();
+		UserService userService = new UserService();
+		List<User> list = userService.getUserList();
 		
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/user/userListOnlyHalf.jsp").forward(request, response);

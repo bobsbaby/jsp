@@ -28,12 +28,17 @@
 		$('.lprodTr').on('click', function(){
 			console.log("lprodTr click");
 			//클릭된 tr태그의 자식태그(td)중 첫번째 자식의 텍스트 문자열
-			alert($(this).children().eq(1).text());
+			//alert($(this).children().eq(1).text());
+			// 클릭된 tr태그의 data 불러오기
+			var data = $(this).data("lprodgu");
+			console.log("data: " + data);
 			
 			//input 태그에 값 설정 
-			$('#lprod_gu').val($(this).children().eq(1).text());
+			//$('#lprod_gu').val($(this).children().eq(1).text());
+			$("#lprod_gu").val(data);
 			//form태그 이용 전송 
 			console.log("serialize : " + $('#frm').serialize());
+			
 			$('#frm').submit();
 		})
 	});
@@ -70,7 +75,7 @@ header
 				
 				<%--루프 태그 for (USer user : userList) --%>
 				<c:forEach items="${lprodList}" var="lprod">
-					<tr class = "lprodTr">
+					<tr class="lprodTr" data-lprodGu="${lprod.lprod_gu }">
 						<td>${lprod.lprod_id}</td>
 						<td>${lprod.lprod_gu}</td>
 						<td>${lprod.lprod_nm}</td>

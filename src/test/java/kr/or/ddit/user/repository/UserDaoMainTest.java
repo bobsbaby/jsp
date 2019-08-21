@@ -13,8 +13,8 @@ public class UserDaoMainTest {
 		//userDao.getUserList();
 		IUserDao userDao = new UserDao();
 		SqlSession sqlSession = MybatisUtil.getSession();
-		
 		List<User> userList = userDao.getUserList(sqlSession);
+		sqlSession.close();
 		
 		sqlSession.close();
 		
@@ -23,5 +23,6 @@ public class UserDaoMainTest {
 		else 
 			System.out.println("db 조회 실패");
 	}
+	
 	
 }
