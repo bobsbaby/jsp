@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.ddit.lprod.model.LprodVo;
 import kr.or.ddit.lprod.repository.LprodDao;
+import kr.or.ddit.lprod.service.LprodServiceImpl;
 
 
 @WebServlet("/lprodList")
@@ -18,8 +19,8 @@ public class LprodListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	LprodDao dao = new LprodDao();
-	List<LprodVo> lprodList = dao.getLprodList();
+	LprodServiceImpl lprodService = new LprodServiceImpl();
+	List<LprodVo> lprodList = lprodService.getLprodList();
 	
 	request.setAttribute("lprodList", lprodList);
 	request.getRequestDispatcher("/lprod/lprodList.jsp").forward(request, response);

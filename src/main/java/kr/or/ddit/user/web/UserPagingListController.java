@@ -30,10 +30,16 @@ public class UserPagingListController extends HttpServlet {
 		//page, pagesize 파라미터 받기 --> 파라미터는 문자 형식으로 
 		String pageStr = request.getParameter("page");
 		String pagesizeStr = request.getParameter("pagesize");
-		Page page = new Page(Integer.parseInt(pageStr), Integer.parseInt(pagesizeStr));
+		
+		int page = pageStr == null ? 1 : Integer.parseInt(pageStr);
+ 		int pagesize = pagesizeStr == null ? 10 : Integer.parseInt(pagesizeStr);
+ 		
+ 		
+		Page p = new Page(page, pagesize);
+		request.setAttribute("pageVo", p);
 		
 		//userservice 객체를 이용하여 getUserPagingList를 호출 
-		Map<String, Object> resultMap = userService.getUserPagingList(page);
+		Map<String, Object> resultMap = userService.getUserPagingList(p);
 		List<User> userList = (List<User>) resultMap.get("userList");
 		//반환된 사용자 리스트를 request객체에 속성으로 저장
 		int paginationSize = (Integer)resultMap.get("pagenationSize");
