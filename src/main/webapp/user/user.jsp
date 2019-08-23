@@ -1,10 +1,8 @@
 <%@page import="kr.or.ddit.user.model.User"%>
-
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,71 +14,68 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
-
 <title>Jsp-basicLib</title>
-
-
-<%@ include file="/commonJsp/basicLib.jsp"%>
-
+<%@ include file="/commonJsp/basicLib.jsp" %>
 </head>
+
 <body>
-	
-	<!-- header -->
-	header
-	<%@include file="/commonJsp/header.jsp"%>
-	<div class="container-fluid">
-		<div class="row">
+   <!-- header -->
+   <%@ include file="/commonJsp/header.jsp" %> 
 
-			<div class="col-sm-3 col-md-2 sidebar">
+   <div class="container-fluid">
+      <div class="row">
 
-				<%@ include file="/commonJsp/left.jsp"%>
+         <div class="col-sm-3 col-md-2 sidebar">
+            <!-- left -->
+            <%@ include file="/commonJsp/left.jsp" %>
+         </div>
+         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-			</div>
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form">
 
-					<div class="form-group">
-						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
-						<div class="col-sm-10">
-							<label class="control-label">${user.userId }</label>
-						</div>
-					</div>
+               <div class="form-group">
+                  <label for="userId" class="col-sm-2 control-label">사용자 아이디</label>
+                  <div class="col-sm-10">
+                     <label class="control-label">${user.userId }</label>
+                  </div>
+               </div>
 
-					<div class="form-group">
-						<label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
-						<div class="col-sm-10">
-								<label class="control-label">${user.userNm }</label>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="userNm" class="col-sm-2 control-label">별명</label>
-						<div class="col-sm-10">
-							<label class="control-label">${user.alias }</label>
-						</div>
-					</div>
-					
-					<div class="form-group">
-						<label for="userNm" class="col-sm-2 control-label">등록일</label>
-						<div class="col-sm-10">
-							<label class="control-label">${user.reg_dt_fmt }</label>
-						</div>
-					</div>
-					
-					<div class="form-group">
-						<label for="pass" class="col-sm-2 control-label">Password</label>
-						<div class="col-sm-10">
-							<label class="control-label">${user.pass }</label>
-						</div>
-					</div>
+               <div class="form-group">
+                  <label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
+                  <div class="col-sm-10">
+                     <label class="control-label">${user.userNm }</label>
+                  </div>
+               </div>
+               
+               <div class="form-group">
+                  <label for="alias" class="col-sm-2 control-label">별명</label>
+                  <div class="col-sm-10">
+                     <label class="control-label">${user.alias }</label>
+                  </div>
+               </div>
+               
+               <div class="form-group">
+                  <label for="reg_dt" class="col-sm-2 control-label">등록일</label>
+                  <div class="col-sm-10">
+                     <label class="control-label">${user.reg_dt_fmt }</label>
+                  </div>
+               </div>
+               
+               <div class="form-group">
+                  <label for="pass" class="col-sm-2 control-label">Password</label>
+                  <div class="col-sm-10">
+                     <label class="control-label">****</label>
+                  </div>
+               </div>
 
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default">사용자 수정</button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+               <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                     <button type="submit" class="btn btn-default">사용자 수정</button>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
 </body>
 </html>

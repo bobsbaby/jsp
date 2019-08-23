@@ -61,4 +61,26 @@ public interface IUserDao {
 	* Method 설명 : 전체 사용자 건수 조회 
 	*/
 	int getUserTotalCnt(SqlSession sqlSession);
+	
+	/**
+	* Method : insertUser
+	* 작성자 : PC-05
+	* 변경이력 :
+	* @param sqlSession
+	* @param user
+	* @return
+	* Method 설명 : 사용자 등록
+	*/
+	int insertUser(SqlSession sqlSession, User user);
+	
+	/**
+	* Method : deleteUser
+	* 작성자 : PC-05
+	* 변경이력 :
+	* @param sqlSession
+	* @param userId
+	* @return
+	* Method 설명 : 사용자 삭제
+	*/
+	int deleteUser(SqlSession sqlSession, String userId);
 }

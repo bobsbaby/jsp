@@ -93,7 +93,7 @@
 								</c:forEach>
 							</table>
 						</div>
-						<br> <a class="btn btn-default center">사용자 등록</a>
+						<br> <a href = "${cp }/userForm" class="btn btn-default center">사용자 등록</a>
 
 						<div class="text-center">
 							<ul class="pagination">
