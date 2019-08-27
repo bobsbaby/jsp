@@ -9,7 +9,7 @@
   </select>
   
   <select id="getUser" parameterType="String" resultType="user">
-  	select * from users where userId = #{userId}
+  	select * from users where userId = #{userId, jdbcType=VARCHAR}
   </select>
   
   <select id ="getUserListOnlyHalf" resultType="user">
@@ -37,13 +37,28 @@
   </select>
   <!-- 사용자 등록 -->
   <insert id = "insertUser" parameterType="user">
-  insert into users(userId, userNm, pass, reg_dt, alias, addr1, addr2, zipcode)
-              values(#{userId}, #{userNm}, #{pass}, #{reg_dt}, #{alias}, #{addr1}, #{addr2}, #{zipcode})
+  insert into users(userId, userNm, pass, reg_dt, alias, addr1, addr2, zipcode, filename, realfilename)
+              values(#{userId}, #{userNm}, #{pass}, #{reg_dt}, #{alias}, #{addr1}, #{addr2}, #{zipcode} , #{filename}, #{realfilename})
   </insert>
   
   <delete id = "deleteUser" parameterType="String">
   	delete from users
   	 where userId = #{userId}
   </delete>
+  
+  
+  <update id = "updateUser" parameterType="user">
+  	update users 
+  	   set userNm = #{userNm}, 
+  	       pass = #{pass}, 
+  	       reg_dt = #{reg_dt}, 
+  	       alias = #{alias}, 
+  	   	   addr1 = #{addr1}, 
+  	   	   addr2 = #{addr2}, 
+  	   	   zipcode = #{zipcode} , 
+  	   	   filename = #{filename}, 
+  	   	   realfilename = #{realfilename}
+  	 where userId = #{userId}    	   
+  </update>
   
 </mapper>

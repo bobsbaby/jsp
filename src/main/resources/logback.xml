@@ -18,8 +18,7 @@
 		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder 
 			by default -->
 		<encoder>
-			<pattern>stdout2 %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} -
-				%msg%n</pattern>
+			<pattern>stdout2 %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
 		</encoder>
 	</appender>
 
@@ -31,8 +30,9 @@
 		</encoder>
 	</appender>
 
+<!-- 디버그 내용 출력 -->
 	<logger name="kr.or.ddit" level="debug">
-		<appender-ref ref="FILE" />
+		<appender-ref ref="STDOUT2" />
 	</logger>
 	
 	<!-- 파일에 저장 -->

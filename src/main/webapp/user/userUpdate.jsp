@@ -28,13 +28,7 @@
 		//사용자 등록 버튼 클릭 이벤트 핸들러 
 		$('#regBtn').on('click', function(){
 			
-// 			var userIdValidationChk = /^([a-zA-Z\d\.@]){5,20}$/.test($('#userId').val())
-// 			if(userIdValidationChk == false) {
-// 				alert("사용자 아이디가 유효하지 않습니다.");
-// 				$('#userId').focus();
-// 				return false;
-// 			}
-			//submit;
+
 			$('#frm').submit();
 		})
 		
@@ -42,8 +36,6 @@
 		$('#zipcodeBtn').click(function() {
 			new daum.Postcode({
 				oncomplete : function(data) {
-					// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
-					// 예제를 참고하여 다양한 활용법을 확인해 보세요.
 					$('#addr1').val(data.roadAddress); //도로주소(addr1)
 					$('#zipcode').val(data.zonecode); //우편번호(zipcde)
 				}
@@ -51,16 +43,7 @@
 		});
 
 	})
-	function setTestData() {
-		$('#userId').val('brownTest');
-		$('#userNm').val('브라운테스트');
-		$('#alias').val('곰테스트');
-		$('#reg_dt').val('2019-08-08');
-		$('#addr1').val('대전광역시 중구 중앙로 중앙로 76');
-		$('#addr2').val('영민빌딩 2층 DDIT');
-		$('#zipcode').val('34940');
-		$('#pass').val('brownTest1234');
-	}
+
 </script>
 
 </head>
@@ -87,6 +70,7 @@
 						<div class="col-sm-10">
 							<input type="file" class="form-control" id="picture" name="picture"
 								placeholder="사용자 사진">
+								<img src = "${cp }/userPicture?userId=${user.userId}"/>
 						</div>
 					</div>
 					
@@ -94,7 +78,7 @@
 						<label for="userId" class="col-sm-2 control-label">사용자 아이디</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="userId" name="userId"
-								placeholder="사용자 아이디" value = "${param.userId}">
+								placeholder="사용자 아이디" value = "${user.userId}" readonly="readonly">
 								${userIdMsg }
 						</div>
 					</div>
@@ -103,14 +87,14 @@
 						<label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="userNm" name="userNm"
-								placeholder="사용자 이름" value = "${param.userNm}">
+								placeholder="사용자 이름" value = "${user.userNm}">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="alias" class="col-sm-2 control-label">별명</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="alias" name="alias"
-								placeholder="별명" value = "${param.alias}">
+								placeholder="별명" value = "${user.alias}">
 						</div>
 					</div>
 
@@ -118,7 +102,7 @@
 						<label for="reg_dt" class="col-sm-2 control-label">생일</label>
 						<div class="col-sm-10">
 							<input type="date" class="form-control" id="reg_dt" name="reg_dt"
-								placeholder="생일" value = "${param.reg_dt}">
+								placeholder="생일" value = "${user.reg_dt_fmt}">
 						</div>
 					</div>
 					
@@ -126,10 +110,10 @@
 						<label for="zipcode" class="col-sm-2 control-label">우편번호</label>
 						<div class="col-sm-7">
 							<input type="text" class="form-control" id="zipcode"
-								name="zipcode" placeholder="우편번호" readonly value = "${param.zipcode}">
+								name="zipcode" placeholder="우편번호" readonly value = "${user.zipcode}">
 						</div>
 						<div class="col-sm-2">
-							<button type="button" id="zipcodeBtn" class="btn btn-default">우편번호
+							<button type="button" id="zipcodeBtn" class="btn btn-default" value = "${user.zipcode }">우편번호
 								검색</button>
 						</div>
 					</div>
@@ -138,7 +122,7 @@
 						<label for="addr1" class="col-sm-2 control-label">주소1</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="addr1" name="addr1"
-								placeholder="주소1" readonly value = "${param.addr1}">
+								placeholder="주소1" readonly value = "${user.addr1}">
 						</div>
 						
 					</div>
@@ -147,7 +131,7 @@
 						<label for="addr2" class="col-sm-2 control-label">주소2</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="addr2" name="addr2"
-								placeholder="주소2" value = "${param.addr2}">
+								placeholder="주소2" value = "${user.addr2}">
 						</div>
 					</div>
 
@@ -155,7 +139,7 @@
 						<label for="pass" class="col-sm-2 control-label">Password</label>
 						<div class="col-sm-10">
 							<input type="password" class="form-control" id="pass" name="pass"
-								placeholder="비밀번호">
+								placeholder="비밀번호" value = "${user.pass }">
 						</div>
 					</div>
 

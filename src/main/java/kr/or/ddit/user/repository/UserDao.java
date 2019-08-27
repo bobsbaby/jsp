@@ -110,8 +110,11 @@ public class UserDao implements IUserDao{
 	*/
 	@Override
 	public int deleteUser(SqlSession sqlSession, String userId) {
-		// TODO Auto-generated method stub
 		return sqlSession.delete("user.deleteUser", userId);
 	}
-	
+
+	@Override
+	public int updateUser(SqlSession sqlSession, User user) {
+		return sqlSession.update("user.updateUser", user);
+	}
 }

@@ -65,4 +65,14 @@ public interface IUserService {
 	* Method 설명 :
 	*/
 	int deleteUser(String userId);
+	
+	/**
+	* Method : updateUser
+	* 작성자 : ¡U KSR ¡U
+	* 변경이력 :
+	* @param user
+	* @return
+	* Method 설명 : 회원 정보 수정
+	*/
+	int updateUser(User user);
 }

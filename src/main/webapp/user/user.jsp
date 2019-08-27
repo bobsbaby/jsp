@@ -16,6 +16,16 @@
 <link rel="icon" href="../../favicon.ico">
 <title>Jsp-basicLib</title>
 <%@ include file="/commonJsp/basicLib.jsp" %>
+
+<script>
+	$(function(){
+		$('#btnok').on('click', function(){
+			$('#frm').submit();
+		})
+	})
+</script>
+
+
 </head>
 
 <body>
@@ -31,7 +41,16 @@
          </div>
          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form"  id = "frm" action="${cp }/UserUpdate"
+					method="get" enctype="multipart/form-data" >
+            <input type = "hidden" name ="userId" value = "${user.userId }"/>
+            <div class="form-group">
+                  <label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
+                  <div class="col-sm-10">
+<%--                   <img src = "${cp }${user.realfilename2 }"/> --%>
+				   	   <img src = "${cp }/userPicture?userId=${user.userId}"/>
+                  </div>
+               </div>
 
                <div class="form-group">
                   <label for="userId" class="col-sm-2 control-label">사용자 아이디</label>
@@ -64,13 +83,14 @@
                <div class="form-group">
                   <label for="pass" class="col-sm-2 control-label">Password</label>
                   <div class="col-sm-10">
-                     <label class="control-label">****</label>
+                     <label class="control-label">${user.pass }</label>
                   </div>
                </div>
 
                <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit" class="btn btn-default">사용자 수정</button>
+                
+                     <button type="button" id = "btnok" class="btn btn-default">사용자 수정</button>
                   </div>
                </div>
             </form>
