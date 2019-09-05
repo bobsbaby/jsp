@@ -30,7 +30,7 @@ public class LoginCheckFilter implements Filter {
 		//style.CSS
 		if(uri.endsWith("/login") ||uri.endsWith(".css") ||uri.endsWith(".js") ) {
 			chain.doFilter(request, response);
-		}
+		} 
 			
 		//로그인하지 않은 상황
 		else if(S_USERVO == null) {
