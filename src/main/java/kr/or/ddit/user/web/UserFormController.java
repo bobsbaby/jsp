@@ -58,8 +58,9 @@ public class UserFormController extends HttpServlet {
 	 * Method 설명 : 사용자 등록 요청
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-
+		//request.setCharacterEncoding("UTF-8");
+		
+		
 		String userId = request.getParameter("userId");
 		String userNm = request.getParameter("userNm");
 		String alias = request.getParameter("alias");
