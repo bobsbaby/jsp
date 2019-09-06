@@ -95,7 +95,7 @@
 
 			<label for="pass" class="sr-only">Password</label> <input
 				type="password" id="pass" name="pass" class="form-control"
-				placeholder="Password" required value="brown1234">
+				placeholder="Password" required>
 			<!-- value="brown1234" -->
 
 			<div class="checkbox">

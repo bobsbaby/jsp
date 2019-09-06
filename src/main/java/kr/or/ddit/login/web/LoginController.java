@@ -113,8 +113,10 @@ public class LoginController extends HttpServlet {
 			//세션 객체를 얻는 방법 
 			HttpSession session = request.getSession();
 			logger.debug("session.getId() : {} " ,session.getId());
-
+			
+//			session.removeAttribute("S_USERVO");
 			session.setAttribute("S_USERVO", user);
+			
 			request.setAttribute("elTest", "elTestValue");
 
 			request.getRequestDispatcher("/main.jsp").forward(request, response);
